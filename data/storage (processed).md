@@ -3,10 +3,12 @@
 - This guide will go through how the image dataset is currently stored for each specfic batch of webscraping and filtering run. 
 - It will also go through which folders to find the most filtered batch of images as well as recommended next actions to take 
 
-### Overview of total filtered images per batch:
-- **230825**: 19,999 images with metadata 
-- **180925**: 306,598 images with metadata
-- **051025**: 304,369 images with metadata
+| Batch ID / Folder name  | Total Images | Images with Metadata |
+|-----------|--------------|----------------------|
+| `230825`    | 19,999       | Yes                  |
+| `180925`    | 306,598      | Yes                  |
+| `051025`    | 304,369      | Yes                  |
+
 
 ---
 
