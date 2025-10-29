@@ -5,7 +5,7 @@ This repo is contains the documentation and guide to the filtering pipeline and 
 - contains high level documentation of the filtering pipeline
 
 ## `./data` 
-- contains the documentation regarding how the image data is being stored and specific details regarding the data storage post filtering.
+- contains the documentation regarding how and where the image data is being stored
 - you should first read `image_dataset_overview_documentation.md` to get a high level understanding
 - then for more detailed info for each specific directory, refer to `storage (processed).md`
 
