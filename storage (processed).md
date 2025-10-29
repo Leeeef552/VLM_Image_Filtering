@@ -3,6 +3,12 @@
 - This guide will go through how the image dataset is currently stored for each specfic batch of webscraping and filtering run. 
 - It will also go through which folders to find the most filtered batch of images as well as recommended next actions to take 
 
+### Overview of total filtered images per batch:
+- **230825**: 19,999 images with metadata 
+- **180925**: 306,598 images with metadata
+- **051025**: 304,369 images with metadata
+
+---
 
 # `230825`
 This was the earliest batch of webscraping and filtering. Additinally, this batch of images was scraped without being very targetted -->  they were scraped from random queries with no particular end in mind but still rooted in Singapore and as a result it may contain the least relevant images. 
@@ -93,9 +99,13 @@ This batch represents a **more targeted web scraping effort** compared to the ea
 
 - All image files are **real copies** (no symlinks).
 for filesystem performance.
-- `1`: Stage 1 contains symbolic links (not actual image files) and includes images that were rejected during initial filtering. Rejection reasons may include low edge density, blur, inappropriate content, or other automated quality checks.
+- `1`: Stage 1 contains symbolic links (not actual image files) and includes images that were rejected during initial filtering. Images are also categorise by rejection reasons (low edge density, blur, inappropriate content)
 - `2`: Starting from Stage 2 (and continuing through Stage 3), the images are real files (not symlinks) and are organized into sharded subdirectories based on their image IDs for efficient filesystem access and management.
 
+
+>  NOTE: There was an issue with the symbolic links in the `1/` directory—specifically, the target files were no longer accessible, rendering the symlinks broken. As a result, the original images referenced in Stage 1 are currently unavailable and will need to be re-downloaded and re-linked.
+> Fortunately, this does **not** impact the integrity of the filtering pipeline or the final outputs. All **Stage 2 (and Stage 3) results contain real image files** that were already copied during processing, so the **core filtered dataset remains intact**. Only the **intermediate Stage 1 artifacts** (used for initial triage) are missing.
+> Since the filtering decisions have already been recorded in the `metadata.jsonl` files and the accepted images are preserved in later stages, this is a recoverable issue. Re-downloading the original images and restoring the symlinks in `1/` will fully restore the intermediate layer—but is **not required** for using or validating the main filtered dataset.
 ```
 storage (processed)
 └── 180925
@@ -104,7 +114,7 @@ storage (processed)
     │   │   ├── images/          # symlinks
     │   │   └── metadata.jsonl
     │   └── rejected
-    │       ├── images/          # symlinks (not categorized by reason)
+    │       ├── images/          # symlinks (categorized by reason)
     │       └── metadata.jsonl   # includes rejection_reason field
     ├── 2
     │   ├── accepted
@@ -127,14 +137,12 @@ storage (processed)
 
 > Note: The `images/` directories under each stage are **sharded** (e.g., `aa/`, `bb/`, etc.), but this is omitted in the tree above for brevity.
 
----
 
 ### Usefulness & Best Practices
 
 - ✅ **Primary usable data**:  
   Use `180925/2/accepted/images` as the **main dataset**—it reflects the 2-out-of-4 model consensus and offers a strong balance of relevance and recall.
 
----
 
 ## Total useful dataset size:
 - Some images might have been lost or not properly tracked due to crashes and re-runs
@@ -156,7 +164,6 @@ This is the most recent batch of web scraping and filtering. Compared to earlier
 > **Recommendation**:  
 > Given the higher false negative rate, I recommend to run an **additional round of Stage 2 filtering** on the `rejected` (and any `pending`, if present) images using a **broader set of models**. This will help **recover useful images** that were mistakenly filtered out and **maximize dataset yield** without compromising quality.
 
----
 
 ### Storage Directory Structure
 
@@ -204,7 +211,6 @@ storage (processed)
         │   └── metadata.jsonl
 ```
 
----
 
 ### Usefulness & Best Practices
 
