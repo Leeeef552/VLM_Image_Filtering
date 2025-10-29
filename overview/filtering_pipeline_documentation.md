@@ -1,7 +1,7 @@
 # 🧠 Filtering Pipeline Document
 
 #### Note:
-*The scripts are often adjusted incrementally based on new findings and available GPU resources, so the pipeline may not be fully reproducible. The primary focus of this document is to help you understand the current state of the image dataset and how it was filtered. Additionally, I hope the logic underlying the filtering process is clear and well-documented and can be adapted further to improve the filtering process.*
+*The scripts are often adjusted incrementally based on new findings and available GPU resources, so the pipeline may not be fully reproducible. The primary focus of this document is to help you understand the current state of the image dataset and how it was filtered. I hope the logic underlying the filtering process is clear and well-documented and can be adapted further to improve the filtering process.*
 
 ## Objectives of Filtering
 The filtering pipeline generally consists of two main stages designed to ensure the collected images are **high-quality** and **relevant to Singapore**. It operates on the below primary objectives:
