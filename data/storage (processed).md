@@ -9,6 +9,7 @@
 | `180925`    | 306,598      | Yes                  |
 | `051025`    | 304,369      | Yes                  |
 
+> for batch 051025 I think if another filtering is done on `rejected` and `pending` a lot more images can be added
 
 ---
 
