@@ -1,7 +1,7 @@
 # Image Dataset Storage Documentation
 This guide will help you understand the structure and organization of the image dataset stored in the `storage (processed)` directory. 
 
-For a more specific guide for each batch of image data webscraping and filtering run, refer to the individual guides here: ()
+For a more specific guide for each batch of image data webscraping and filtering run, refer to the individual guides here: [storage (processed).md](https://github.com/Leeeef552/VLM_Image_Filtering/blob/main/data/storage%20(processed).md).
 
 > ❗NOTE: *Be careful: The nsfw folders do contain nsfw images, can consider just deleting. I originally retained the entire rejected folders in case there is a need to run another filtering, to resolve false negatives. Later batches of runs tend to have significantly less nsfw as I tweaked the searXNG engine to have a more strict nsfw filter*
 
