@@ -1,5 +1,5 @@
 # 📄 `filter1.py` 
- - corresponds to stage 1 of the filtering pipeline (see https://github.com/Leeeef552/VLM_Image_Filtering/blob/main/filtering_pipeline_documentation.md)
+ - corresponds to stage 1 of the filtering pipeline (see [filtering_pipeline_documentation.md](https://github.com/Leeeef552/VLM_Image_Filtering/blob/main/filtering_pipeline_documentation.md))  
  - contains the logic for the filtering, as well as some file and data management logic
 
 ### 🔍 Purpose
