@@ -59,7 +59,7 @@ Below is the decision making rules I employed depending on the number of gpu res
 During development and scaling of the image filtering pipeline, several practical lessons emerged that significantly impact reliability, performance, and maintainability:
 
 1. File System Organization & Scalability: 
-    - Storing millions of images in a single directory can overwhelm the file system, causing slow access, crashes, or failure to list contents. To mitigate this, shard images into subdirectories early in the pipeline (e.g., using the first two characters of a hashed filename as the subfolder name: ab/abcdef1234.jpg). This structure should be applied from initial download through all filtering stages to ensure consistent and scalable access.
+    - Storing millions of images in a single directory can overwhelm the file system, causing slow access, crashes, or failure to list contents. To mitigate this, shard images into sub-directories early in the pipeline (e.g., using the first two characters of a hashed filename as the subfolder name: ab/abcdef1234.jpg). This structure should be applied from initial download through all filtering stages to ensure consistent and scalable access.
 
 2. Efficient Data Handling with Links
     - Images are large (often resulting in 100+ GB directories), so copying files during filtering stages consumes excessive storage and time. Moving files risks data loss or corruption if a process crashes mid-operation. The safest and most space-efficient approach is to use symbolic or hard links to reference images across stages. This preserves the original data while enabling lightweight “copies” for downstream processing—implemented in later filtering batches of this repository.
