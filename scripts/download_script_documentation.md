@@ -1,5 +1,5 @@
 
-# Downloader Script (`./scripts/download_images.py`)
+# Downloader Script (`./scripts/download.py`)
 
 This script downloads and processes images from the web-scraped data at scale. It handles both image URLs and base64-encoded images (including data URIs), saves them in a filesystem-friendly structure, while supporting **resumable**, **idempotent**, and **high-concurrency** execution.
 
