@@ -155,4 +155,3 @@ For detailed information about Stage 3, including its purpose, methodology, and 
 }
 ```
 > NOTE: some of the metadata.jsonl may contain `image_path`, generally these are unreliable as the folder names and file paths may have been altered. To find the image path, you should rely on the image_id as this is generally the ground truth pointer. The path should be resolved by referring to the `./images` folder in the same directory as each `metadata.jsonl`
-- 
