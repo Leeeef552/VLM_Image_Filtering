@@ -20,8 +20,6 @@ storage (processed)/
 └── ...
 ```
 
----
-
 ## 🗂️ Structure Within Each DDMMYY Folder
 
 Each date-named folder contains numbered subdirectories (`1`, `2`, `3`, etc.) representing the results of sequential filtering stages:
@@ -35,8 +33,6 @@ Each date-named folder contains numbered subdirectories (`1`, `2`, `3`, etc.) re
 ## NOTE: 📦 Image Organization: Splitting Large Folders
 
 To avoid performance issues or system limitations with large directories, image folders (especially under `accepted/images/` and `rejected/images/`) may be split into subdirectories using the **first 2 characters of the image ID hash**.
-
----
 
 Example:
 ```
@@ -89,7 +85,6 @@ Contains images that failed Stage 1 filtering.
 - `metadata.jsonl` → Metadata for rejected images.
 
 > 💡 *Note: Rejected images are categorized by reason to help diagnose filtering behavior.* 
----
 
 ## 🧹 Stage 2 Filtering (`2/`)
 
@@ -107,7 +102,6 @@ Simplified structure:
 
 > 💡 *Note: Stage 2 does not categorize rejections by reason — all rejected images are stored together.*
 
----
 
 ## 🧪 Stage 3 Filtering (`3/`) — Experimental
 
@@ -115,7 +109,6 @@ Simplified structure:
 
 For detailed information about Stage 3, including its purpose, methodology, and output structure, please refer to:
 👉 [filter3_documentation.md](https://github.com/Leeeef552/VLM_Image_Filtering/blob/main/filter3_documentation.md)
-
 
 ---
 
