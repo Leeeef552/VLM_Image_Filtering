@@ -10,6 +10,6 @@ This repo is contains the documentation and guide to the filtering pipeline and 
 - then for more detailed info for each specific directory, refer to `storage (processed).md`
 
 ## `./scripts`
-- contains specific script level documentation, describing and explaining what each of the filtering script does 
+- contains script level documentation, describing and explaining what each of the filtering script does 
 
 > Use as a reference, the actual scripts and image data are on the gpu cluster.
