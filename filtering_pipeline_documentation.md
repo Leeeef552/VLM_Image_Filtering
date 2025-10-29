@@ -49,7 +49,7 @@ Below is the decision making rules I employed depending on the number of gpu res
     - when there is contention (one model accepts, the other rejects), then the image is placed in the pending folder
 
 2. Filtering with 2 VLM models
-    - take the majority vote (ie. if at least 2 of the 3 models accept, then we will accept that the image is relevant, vice versa)
+    - take the majority vote (ie. as long as 1 of the 3 models accept, then we will accept that the image is relevant, vice versa)
 
 3. Filtering with 4 VLM models
     - as long as any 2 models accepts we will accept that the image is relevant. 
