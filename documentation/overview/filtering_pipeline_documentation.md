@@ -1,7 +1,7 @@
 # 🧠 Filtering Pipeline Document
 
 #### Note:
-*The scripts are often adjusted incrementally based on new findings and available GPU resources, so the pipeline may not be fully reproducible. The primary focus of this document is to help you understand the current state of the image dataset and how it was filtered. Additionally, I hope the logic underlying the filtering process is clear and well-documented and can be adapted further to improve the filtering process.*
+*The scripts are often adjusted incrementally based on new findings and available GPU resources, so the pipeline may not be fully reproducible. The primary focus of this document is to help you understand the current state of the image dataset and how it was filtered. I hope the logic underlying the filtering process is clear and well-documented and can be adapted further to improve the filtering process.*
 
 ## Objectives of Filtering
 The filtering pipeline generally consists of two main stages designed to ensure the collected images are **high-quality** and **relevant to Singapore**. It operates on the below primary objectives:
@@ -48,7 +48,7 @@ Below is the decision making rules I employed depending on the number of gpu res
     - follow the decision made when both models agree (ie. if both models decide the image is relevant, then it is relevant, and if both decide it is not relevant, then it is rejected)
     - when there is contention (one model accepts, the other rejects), then the image is placed in the pending folder
 
-2. Filtering with 2 VLM models
+2. Filtering with 3 VLM models
     - take the majority vote (ie. as long as 1 of the 3 models accept, then we will accept that the image is relevant, vice versa)
 
 3. Filtering with 4 VLM models
@@ -59,7 +59,7 @@ Below is the decision making rules I employed depending on the number of gpu res
 During development and scaling of the image filtering pipeline, several practical lessons emerged that significantly impact reliability, performance, and maintainability:
 
 1. File System Organization & Scalability: 
-    - Storing millions of images in a single directory can overwhelm the file system, causing slow access, crashes, or failure to list contents. To mitigate this, shard images into subdirectories early in the pipeline (e.g., using the first two characters of a hashed filename as the subfolder name: ab/abcdef1234.jpg). This structure should be applied from initial download through all filtering stages to ensure consistent and scalable access.
+    - Storing millions of images in a single directory can overwhelm the file system, causing slow access, crashes, or failure to list contents. To mitigate this, shard images into sub-directories early in the pipeline (e.g., using the first two characters of a hashed filename as the subfolder name: ab/abcdef1234.jpg). This structure should be applied from initial download through all filtering stages to ensure consistent and scalable access.
 
 2. Efficient Data Handling with Links
     - Images are large (often resulting in 100+ GB directories), so copying files during filtering stages consumes excessive storage and time. Moving files risks data loss or corruption if a process crashes mid-operation. The safest and most space-efficient approach is to use symbolic or hard links to reference images across stages. This preserves the original data while enabling lightweight “copies” for downstream processing—implemented in later filtering batches of this repository.
